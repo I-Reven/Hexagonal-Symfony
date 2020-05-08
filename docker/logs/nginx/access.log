@@ -1,0 +1,7 @@
+172.18.0.1 - - [08/May/2020:14:59:55 +0000] "GET / HTTP/1.1" 404 31926 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0"
+172.18.0.1 - - [08/May/2020:15:00:19 +0000] "GET / HTTP/1.1" 200 107140 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0"
+172.18.0.1 - - [08/May/2020:15:00:22 +0000] "GET / HTTP/1.1" 200 107126 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0"
+172.18.0.1 - - [08/May/2020:15:00:30 +0000] "GET / HTTP/1.1" 200 75237 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0"
+172.18.0.1 - - [08/May/2020:15:01:15 +0000] "GET / HTTP/1.1" 200 75237 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0"
+172.18.0.1 - - [08/May/2020:15:02:23 +0000] "GET / HTTP/1.1" 200 75066 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0"
+172.18.0.1 - - [08/May/2020:15:03:29 +0000] "GET / HTTP/1.1" 404 31894 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0"
