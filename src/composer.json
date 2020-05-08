@@ -12,6 +12,8 @@
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {
+        "liip/functional-test-bundle": "^4.1",
+        "symfony/phpunit-bridge": "^5.0"
     },
     "config": {
         "preferred-install": {
