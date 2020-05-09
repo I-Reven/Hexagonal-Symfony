@@ -19,9 +19,16 @@ services:
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller'
+    App\Domain\Controller\:
+        resource: '../src/Domain/Controller'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    get_set_method_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
+        tags: [serializer.normalizer]
+
+    App\Infrastructure\Decorator\Contract\TaskDecoratorContract:
+        factory: ['App\Infrastructure\Decorator\TaskDecoratorFactory', 'createTaskDecoratorManager']
