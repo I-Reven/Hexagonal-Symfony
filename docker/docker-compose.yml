@@ -21,13 +21,19 @@ services:
       - "6379:6379"
 
   rabbitmq:
-    image: rabbitmq:3.6.1-management
+    image: rabbitmq:3-management
     environment:
+      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
       RABBITMQ_DEFAULT_USER: ${RABBIT_USER}
-      RABBITMQ_DEFAULT_PASSWORD: ${RABBIT_PASSWORD}
+      RABBITMQ_DEFAULT_PASS: ${RABBIT_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
     ports:
       - "15672:15672"
       - "5672:5672"
+    labels:
+      NAME: "docker_rabbitmq"
+    volumes:
+      - ./queue/enabled_plugins:/etc/rabbitmq/enabled_plugins
 
   php-fpm:
     build:
@@ -39,6 +45,7 @@ services:
       - APP_SECRET=${APP_SECRET}
       - DATABASE_URL=mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@database:3306/${DATABASE_NAME}?serverVersion=5.7
       - MESSENGER_TRANSPORT_DSN=amqp://${RABBIT_USER}:${RABBIT_PASSWORD}@rabbitmq:5672/%2f/messages
+      - REDIS_URL=redis://localhost:6379
     volumes:
       - ../src:/var/www
       - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/custom.php.ini
