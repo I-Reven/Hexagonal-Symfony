@@ -43,7 +43,7 @@ class RegisterTasksCommend extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->taskService->register();
+        $this->taskService->registerTasks();
 
         $output->writeln([
             'Task Registered',

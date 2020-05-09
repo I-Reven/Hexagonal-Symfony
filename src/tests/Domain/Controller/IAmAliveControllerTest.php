@@ -23,5 +23,4 @@ class IAmAliveControllerTest extends WebTestCase
 
         $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
-
 }

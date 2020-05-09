@@ -62,6 +62,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/http-kernel" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/messenger" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/mime" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/phpunit-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-idn" />
