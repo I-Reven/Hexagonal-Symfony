@@ -4,20 +4,22 @@ namespace App\Infrastructure\Repository;
 
 use App\Domain\Contract\Repository\TaskRepositoryContract;
 use App\Infrastructure\Entity\Task;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Mapping;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
-use Doctrine\Persistence\ManagerRegistry;
 
-class TaskRepository extends ServiceEntityRepository implements TaskRepositoryContract
+class TaskRepository extends EntityRepository implements TaskRepositoryContract
 {
-    /**
-     * @param ManagerRegistry $registry
-     */
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Task::class);
-    }
+    /** @var EntityManagerInterface */
+    protected $entityManager;
+
+   public function __construct(EntityManagerInterface $entityManager, Mapping\ClassMetadata $class)
+   {
+       $this->entityManager = $entityManager;
+       parent::__construct($entityManager, $class);
+   }
 
     /**
      * @param Task $task

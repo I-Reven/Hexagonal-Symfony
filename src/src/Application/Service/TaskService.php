@@ -32,6 +32,7 @@ class TaskService implements TaskServiceContract
     /** @var AssignTaskProcedure  */
     private AssignTaskProcedure $assignTaskProcedure;
 
+    /** @var TaskRepositoryContract */
     private TaskRepositoryContract $taskRepository;
 
     /**
