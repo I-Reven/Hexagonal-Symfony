@@ -50,6 +50,15 @@ services:
       - ../backend:/var/www
       - ./php-fpm/php.ini:/usr/local/etc/php/conf.d/custom.php.ini
 
+  vue:
+    build:
+      context: ../frontend
+    ports:
+      - '8080:8080'
+      - '80:80'
+    volumes:
+      - ../frontend:/app
+
   nginx:
     build:
       context: ./nginx
