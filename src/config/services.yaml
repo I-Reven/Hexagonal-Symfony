@@ -37,3 +37,8 @@ services:
         factory: ['@doctrine.orm.default_entity_manager', 'getRepository']
         arguments:
             - App\Infrastructure\Entity\Task
+
+    App\Infrastructure\Repository\DeveloperRepository:
+        factory: ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - App\Infrastructure\Entity\Developer

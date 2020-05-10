@@ -4,6 +4,8 @@ namespace App\Infrastructure\Queue\Consumer;
 
 use App\Application\Service\Contract\TaskServiceContract;
 use App\Domain\Message\StoreTaskMessage;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 /**
@@ -26,6 +28,8 @@ class StoreTaskConsumer implements MessageHandlerInterface
 
     /**
      * @param StoreTaskMessage $message
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
     public function __invoke(StoreTaskMessage $message)
     {

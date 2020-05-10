@@ -6,6 +6,8 @@ use App\Application\Proxy\Contract\TasksContract;
 use App\Application\Service\Contract\TaskServiceContract;
 use App\Domain\Contract\Queue\Procedure\StoreTaskProcedureContract;
 use App\Domain\Contract\Repository\TaskRepositoryContract;
+use App\Domain\Contract\Service\DeveloperServiceContract;
+use App\Infrastructure\Entity\Developer;
 use App\Infrastructure\Entity\Task;
 use App\Infrastructure\Queue\Procedure\AssignTaskProcedure;
 use Doctrine\ORM\OptimisticLockException;
@@ -26,10 +28,10 @@ class TaskService implements TaskServiceContract
     /** @var TasksContract */
     private TasksContract $tasksContract;
 
-    /** @var StoreTaskProcedureContract  */
+    /** @var StoreTaskProcedureContract */
     private StoreTaskProcedureContract $storeTaskProcedure;
 
-    /** @var AssignTaskProcedure  */
+    /** @var AssignTaskProcedure */
     private AssignTaskProcedure $assignTaskProcedure;
 
     /** @var TaskRepositoryContract */
@@ -73,15 +75,22 @@ class TaskService implements TaskServiceContract
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function storeTask(Task $task){
+    public function storeTask(Task $task)
+    {
         $this->taskRepository->save($task);
         $this->assignTaskProcedure->handle($task);
     }
 
     /**
      * @param Task $task
+     * @param Developer $developer
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
-    public function assignTask(Task $task){
-//        dump($task);
+    public function assignDeveloper(Task $task, Developer $developer)
+    {
+        dump($developer);
+        dump($task);
+//        $this->taskRepository->assignDeveloper($task, $developer);
     }
 }

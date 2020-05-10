@@ -2,9 +2,8 @@
 
 namespace App\Infrastructure\Queue\Consumer;
 
-use App\Application\Service\Contract\TaskServiceContract;
+use App\Domain\Contract\Service\DeveloperServiceContract;
 use App\Domain\Message\AssignTaskMessage;
-use App\Domain\Message\StoreTaskMessage;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 /**
@@ -13,16 +12,16 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
  */
 class AssignTaskConsumer implements MessageHandlerInterface
 {
-    /** @var TaskServiceContract  */
-    private TaskServiceContract $taskService;
+    /** @var DeveloperServiceContract  */
+    private DeveloperServiceContract $developerService;
 
     /**
      * StoreTaskConsumer constructor.
-     * @param TaskServiceContract $taskService
+     * @param DeveloperServiceContract $developerService
      */
-    public function __construct(TaskServiceContract $taskService)
+    public function __construct(DeveloperServiceContract $developerService)
     {
-        $this->taskService = $taskService;
+        $this->developerService = $developerService;
     }
 
     /**
@@ -30,6 +29,6 @@ class AssignTaskConsumer implements MessageHandlerInterface
      */
     public function __invoke(AssignTaskMessage $message)
     {
-        $this->taskService->assignTask($message->getTask());
+        $this->developerService->assignTask($message->getTask());
     }
 }

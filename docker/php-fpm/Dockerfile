@@ -6,5 +6,5 @@ RUN apk add --no-cache bash
 RUN docker-php-ext-install pdo_mysql
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 WORKDIR /var/www
-CMD composer install ; wait-for-it database:3306 -- bin/console doctrine:migrations:migrate ;  php-fpm
+CMD composer install ; wait-for-it database:3306 -- bin/console doctrine:migrations:migrate ; bin/console doctrine:fixtures:load ; php-fpm
 EXPOSE 9000

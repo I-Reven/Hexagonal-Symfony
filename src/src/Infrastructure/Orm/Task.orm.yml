@@ -1,0 +1,9 @@
+App\Infrastructure\Entity\Task:
+  type: entity
+
+  manyToOne:
+    developer:
+      targetEntity: App\Infrastructure\Entity\Developer
+      inversedBy: tasks
+      joinColumn:
+        nullable: true

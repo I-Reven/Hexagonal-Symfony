@@ -3,6 +3,7 @@
 namespace App\Infrastructure\Repository;
 
 use App\Domain\Contract\Repository\TaskRepositoryContract;
+use App\Infrastructure\Entity\Developer;
 use App\Infrastructure\Entity\Task;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
@@ -10,15 +11,36 @@ use Doctrine\ORM\Mapping;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 
+/**
+ * Class TaskRepository
+ * @package App\Infrastructure\Repository
+ */
 class TaskRepository extends EntityRepository implements TaskRepositoryContract
 {
     /** @var EntityManagerInterface */
-    protected $entityManager;
+    protected EntityManagerInterface $entityManager;
 
+    /**
+     * TaskRepository constructor.
+     * @param EntityManagerInterface $entityManager
+     * @param Mapping\ClassMetadata $class
+     */
    public function __construct(EntityManagerInterface $entityManager, Mapping\ClassMetadata $class)
    {
        $this->entityManager = $entityManager;
        parent::__construct($entityManager, $class);
+   }
+
+    /**
+     * @param Task $task
+     * @param Developer $developer
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+   public function assignDeveloper(Task $task, Developer $developer)
+   {
+       $task->setDeveloper($developer);
+       $this->save($task);
    }
 
     /**
@@ -30,7 +52,5 @@ class TaskRepository extends EntityRepository implements TaskRepositoryContract
     {
         $this->_em->persist($task);
         $this->_em->flush();
-
-//        dump($task);
     }
 }
