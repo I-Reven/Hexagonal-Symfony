@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Decorator;
 
-use App\Domain\Entity\Task;
+use App\Infrastructure\Entity\Task;
 use App\Domain\Enum\ResourceEnum;
 use App\Domain\Contract\Decorator\TaskDecoratorContract;
 use Symfony\Component\HttpClient\HttpClient;
@@ -21,7 +21,7 @@ class TaskDecoratorV1 extends TaskDecorator implements TaskDecoratorContract
      */
     public function parseTask(array $data): Task
     {
-        return new Task($data['id'], $data['sure'], $data['zorluk']);
+        return new Task(null, $data['id'], $data['sure'], $data['zorluk']);
     }
 
     /**

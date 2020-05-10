@@ -4,7 +4,7 @@
 namespace App\Infrastructure\Decorator\Contract;
 
 
-use App\Domain\Entity\Task;
+use App\Infrastructure\Entity\Task;
 
 interface TaskParserDelegate
 {

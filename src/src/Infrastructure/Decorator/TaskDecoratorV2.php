@@ -3,7 +3,7 @@
 namespace App\Infrastructure\Decorator;
 
 use App\Domain\Contract\Decorator\TaskDecoratorContract;
-use App\Domain\Entity\Task;
+use App\Infrastructure\Entity\Task;
 use App\Domain\Enum\ResourceEnum;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
@@ -22,9 +22,10 @@ class TaskDecoratorV2 extends TaskDecorator implements TaskDecoratorContract
     public function parseTask(array $data): Task
     {
         return new Task(
+            null,
             array_keys($data)[0],
-            $data[array_keys($data)[0]]['level'],
-            $data[array_keys($data)[0]]['estimated_duration']
+            $data[array_keys($data)[0]]['estimated_duration'],
+            $data[array_keys($data)[0]]['level']
         );
     }
 

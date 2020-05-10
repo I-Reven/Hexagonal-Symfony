@@ -2,10 +2,8 @@
 
 namespace App\Infrastructure\Decorator;
 
-use App\Domain\Entity\Task;
+use App\Infrastructure\Entity\Task;
 use App\Infrastructure\Decorator\Contract\TaskDecoratorContract;
-use App\Infrastructure\Decorator\Contract\TaskParserDelegate;
-use App\Infrastructure\Decorator\Contract\TaskRequestDelegate;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;

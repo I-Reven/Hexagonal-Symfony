@@ -3,7 +3,7 @@
 namespace App\Application\Proxy;
 
 use App\Application\Proxy\Contract\TasksContract;
-use App\Domain\Entity\Task;
+use App\Infrastructure\Entity\Task;
 use App\Infrastructure\Decorator\Contract\TaskDecoratorContract;
 use App\Infrastructure\Decorator\TaskDecoratorFactory;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;

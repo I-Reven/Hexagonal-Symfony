@@ -2,9 +2,10 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-migrations-bundle": "^2.1",
         "friendsofsymfony/rest-bundle": "dev-master",
         "symfony/console": "5.0.*",
         "symfony/dotenv": "5.0.*",
@@ -12,12 +13,14 @@
         "symfony/framework-bundle": "5.0.*",
         "symfony/http-client": "5.0.*",
         "symfony/messenger": "5.0.*",
+        "symfony/orm-pack": "^1.0",
         "symfony/serializer-pack": "^1.0",
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {
         "liip/functional-test-bundle": "^4.1",
         "phpunit/phpunit": "^7.5.0",
+        "symfony/maker-bundle": "^1.17",
         "symfony/phpunit-bridge": "^5.0"
     },
     "config": {

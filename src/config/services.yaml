@@ -32,3 +32,8 @@ services:
 
     App\Infrastructure\Decorator\Contract\TaskDecoratorContract:
         factory: ['App\Infrastructure\Decorator\TaskDecoratorFactory', 'createTaskDecoratorManager']
+
+    App\Infrastructure\Repository\TaskRepository:
+        factory: ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - App\Infrastructure\Entity\Task

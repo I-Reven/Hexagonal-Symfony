@@ -4,7 +4,7 @@
 namespace App\Application\Service\Contract;
 
 
-use App\Domain\Entity\Task;
+use App\Infrastructure\Entity\Task;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;

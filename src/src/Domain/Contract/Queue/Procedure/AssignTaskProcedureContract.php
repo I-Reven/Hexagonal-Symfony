@@ -2,7 +2,7 @@
 
 namespace App\Domain\Contract\Queue\Procedure;
 
-use App\Domain\Entity\Task;
+use App\Infrastructure\Entity\Task;
 
 /**
  * Interface AssignTaskProcedureContract

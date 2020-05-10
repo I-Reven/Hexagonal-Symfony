@@ -3,7 +3,7 @@
 namespace App\Infrastructure\Queue\Procedure;
 
 use App\Domain\Contract\Queue\Procedure\AssignTaskProcedureContract;
-use App\Domain\Entity\Task;
+use App\Infrastructure\Entity\Task;
 use App\Domain\Message\AssignTaskMessage;
 
 /**

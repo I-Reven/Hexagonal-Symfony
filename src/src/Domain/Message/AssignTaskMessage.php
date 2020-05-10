@@ -2,7 +2,7 @@
 
 namespace App\Domain\Message;
 
-use App\Domain\Entity\Task;
+use App\Infrastructure\Entity\Task;
 
 class AssignTaskMessage
 {
