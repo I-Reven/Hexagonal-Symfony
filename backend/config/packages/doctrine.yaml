@@ -1,0 +1,16 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+        driver: pdo_mysql
+        charset: utf8mb4
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Infrastructure/Entity'
+                prefix: 'App\Infrastructure\Entity'
+                alias: App

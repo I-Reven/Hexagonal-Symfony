@@ -1,7 +1,0 @@
-App\Infrastructure\Entity\Developer:
-  type: entity
-
-  oneToMany:
-    tasks:
-      targetEntity: App\Infrastructure\Entity\Task
-      mappedBy: developer
