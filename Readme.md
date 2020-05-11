@@ -7,6 +7,7 @@ To-Do Planning,
 #### Architectures
 - Hexagonal Architecture
 - Domain Driven Design Architecture
+- Test Driven Development
 
 #### Patterns
 - Adapter
@@ -15,6 +16,8 @@ To-Do Planning,
 - Factory
 - Observer
 - Delegate
+- Repository-Service
+- Producer–consumer
 
 
 ## Installation
