@@ -26,21 +26,21 @@ To-Do Planning,
 ### step 1
 Get project
 ```shell script
-cd docker
-docker-compose up --build
-docker ps
+git clone https://github.com/koushamad/enuygun.git
 ```
 
 ### step 2
 Build project
 ```shell script
-cd docker
+cd enuygun/docker
 docker-compose up --build
-docker ps
 ```
 
+### step 3
 Check Your docker containers
-
+```shell script
+docker ps
+```
 - docker_nginx
 - docker_php-fpm
 - docker_database
@@ -50,7 +50,7 @@ Check Your docker containers
 
 If we do`nt have one of this container please try again
 
-### step 3
+### step 4
 
 Migrate database
 
@@ -60,7 +60,15 @@ docker exec -it docker_php-fpm_1 bin/console doctrine:fixtures:load
 docker exec -it docker_php-fpm_1 bin/console adapter:register-tasks
 ```
 
-### step 4
+### step 5
+
+Run Tests
+
+```shell script
+docker exec -it docker_php-fpm_1 vendor/bin/simple-phpunit
+```
+
+### step 6
 
 Fetch tasks
 
@@ -68,5 +76,5 @@ Fetch tasks
 docker exec -it docker_php-fpm_1 bin/console adapter:register-tasks
 ```
 
-### step 5
+### step 7
 go to http://loccalhost
