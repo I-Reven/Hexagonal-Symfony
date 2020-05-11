@@ -8,6 +8,8 @@ use App\Domain\Command\RegisterTasksCommend;
 use App\Tests\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use ReflectionException;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class RegisterTasksCommendTest
@@ -56,5 +58,20 @@ class RegisterTasksCommendTest extends TestCase
         $this->registerTaskCommend->expects($this->once())->method('setHelp')->with([$help])->willReturnSelf();
 
         $this->assertNull($this->invokeMethod($this->registerTaskCommend, 'configure'));
+    }
+
+    /**
+     * @test
+     * @covers ::configure
+     */
+    public function itShouldExecuteCommend()
+    {
+        /** @var InputInterface|MockObject $input */
+        $input = $this->getIsolatedMock(InputInterface::class, InputInterface::class);
+        /** @var OutputInterface|MockObject $input */
+        $output = $this->getIsolatedMock(InputInterface::class, OutputInterface::class);
+        $this->taskService->expects($this->once())->method('registerTasks');
+
+        $input->assertEquals(0, $this->registerTaskCommend->expects($input, $$output));
     }
 }
