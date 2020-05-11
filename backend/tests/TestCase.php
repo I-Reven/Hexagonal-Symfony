@@ -2,7 +2,10 @@
 
 namespace App\Tests;
 
+use Faker\Factory;
+use Faker\Generator;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
+use PHPUnit\Framework\MockObject\MockBuilder;
 use PHPUnit_Framework_MockObject_MockObject;
 use ReflectionClass;
 use ReflectionException;
@@ -13,6 +16,18 @@ use ReflectionException;
  */
 abstract class TestCase extends WebTestCase
 {
+
+    /** @var ?Generator */
+    private $faker = null;
+
+    /**
+     * @return Generator
+     */
+    protected function faker(): Generator
+    {
+        return $this->faker ? $this->faker : Factory::create();
+    }
+
     /**
      * @param $class
      * @param array $ignoreMethods
@@ -60,5 +75,78 @@ abstract class TestCase extends WebTestCase
         $method->setAccessible(true);
 
         return $method->invokeArgs($object, $parameters);
+    }
+
+    /**
+     * For setting private or protected property of an object
+     * @param mixed $object
+     * @param mixed $property
+     * @param $value
+     * @throws ReflectionException
+     */
+    public function setPrivateProperty($object, $property, $value)
+    {
+        $reflection = new ReflectionClass($object);
+        $reflectionProperty = $reflection->getProperty($property);
+        $reflectionProperty->setAccessible(true);
+        $reflectionProperty->setValue($object, $value);
+    }
+
+    /**
+     * For getting private or protected property of an object
+     * @param mixed $object
+     * @param mixed $property
+     * @return mixed
+     * @throws ReflectionException
+     */
+    public function getPrivateProperty($object, $property)
+    {
+        $reflection = new ReflectionClass($object);
+        $reflectionProperty = $reflection->getProperty($property);
+        $reflectionProperty->setAccessible(true);
+
+        return $reflectionProperty->getValue($object);
+    }
+
+    /**
+     * For getting private or protected property of an object parent class
+     * @param mixed $object
+     * @param mixed $property
+     * @return mixed
+     * @throws ReflectionException
+     */
+    public function getPrivatePropertyFromParentClass($object, $property)
+    {
+        $reflection = (new ReflectionClass($object))->getParentClass();
+        $reflectionProperty = $reflection->getProperty($property);
+        $reflectionProperty->setAccessible(true);
+
+        return $reflectionProperty->getValue($object);
+    }
+
+    /**
+     * For getting private or protected property of an object's grand parent's class
+     * @param mixed $object
+     * @param mixed $property
+     * @return mixed
+     * @throws ReflectionException
+     */
+    public function getPrivatePropertyFromGrandParentClass($object, $property)
+    {
+        $reflection = (new ReflectionClass($object))->getParentClass();
+        $reflectionProperty = $reflection->getParentClass()->getProperty($property);
+        $reflectionProperty->setAccessible(true);
+
+        return $reflectionProperty->getValue($object);
+    }
+
+    /**
+     * Returns a builder object to create mock objects using a fluent interface.
+     *
+     * @param string|string[] $className
+     */
+    public function getMockBuilder($className): MockBuilder
+    {
+        return new MockBuilder($this, $className);
     }
 }

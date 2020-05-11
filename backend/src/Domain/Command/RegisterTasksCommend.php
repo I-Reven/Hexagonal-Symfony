@@ -55,9 +55,8 @@ class RegisterTasksCommend extends Command
     {
         $this->taskService->registerTasks();
 
-        $output->writeln([
-            'Task Registered',
-        ]);
+        $output->writeln(['Task Registered']);
+
 
         return 0;
     }

@@ -3,7 +3,6 @@
 namespace App\Tests\Domain\Commend;
 
 use App\Application\Service\Contract\TaskServiceContract;
-use App\Application\Service\TaskService;
 use App\Domain\Command\RegisterTasksCommend;
 use App\Tests\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -26,21 +25,10 @@ class RegisterTasksCommendTest extends TestCase
 
     protected function setUp()
     {
-        $this->taskService = $this->getIsolatedMock(TaskService::class);
+        $this->taskService = $this->getIsolatedMock(TaskServiceContract::class);
         $this->registerTaskCommend = new RegisterTasksCommend($this->taskService);
 
         parent::setUp();
-    }
-
-    /**
-     * @param array $methods
-     */
-    protected function getMockCommand(array $methods = [])
-    {
-        $this->registerTaskCommend = $this->getMockBuilder(RegisterTasksCommend::class)
-            ->setConstructorArgs([$this->taskService])
-            ->setMethods($methods)
-            ->getMock();
     }
 
     /**
@@ -52,26 +40,28 @@ class RegisterTasksCommendTest extends TestCase
     {
         $description = 'Register Tasks Commend';
         $help = 'This command allows you to register task';
-        $this->getMockCommand(['setDescription', 'setHelp']);
-
-        $this->registerTaskCommend->expects($this->once())->method('setDescription')->with([$description])->willReturnSelf();
-        $this->registerTaskCommend->expects($this->once())->method('setHelp')->with([$help])->willReturnSelf();
 
         $this->assertNull($this->invokeMethod($this->registerTaskCommend, 'configure'));
+        $this->assertEquals($description, $this->registerTaskCommend->getDescription());
+        $this->assertEquals($help, $this->registerTaskCommend->getHelp());
     }
 
     /**
      * @test
-     * @covers ::configure
+     * @covers ::execute
+     * @throws ReflectionException
      */
     public function itShouldExecuteCommend()
     {
         /** @var InputInterface|MockObject $input */
-        $input = $this->getIsolatedMock(InputInterface::class, InputInterface::class);
-        /** @var OutputInterface|MockObject $input */
-        $output = $this->getIsolatedMock(InputInterface::class, OutputInterface::class);
-        $this->taskService->expects($this->once())->method('registerTasks');
+        $input = $this->getIsolatedMock(InputInterface::class);
 
-        $input->assertEquals(0, $this->registerTaskCommend->expects($input, $$output));
+        /** @var OutputInterface|MockObject $input */
+        $output = $this->getIsolatedMock(OutputInterface::class);
+
+        $this->taskService->expects($this->once())->method('registerTasks');
+        $output->expects($this->once())->method('writeln')->with(['Task Registered']);
+
+        $this->assertEquals(0, $this->invokeMethod($this->registerTaskCommend, 'execute', [$input, $output]));
     }
 }
