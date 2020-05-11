@@ -18,10 +18,10 @@ To-Do Planning,
 - Delegate
 - Repository-Service
 - Producer–consumer
+- Singleton
 
 
 ## Installation
-
 
 ### step 1
 Get project
@@ -51,9 +51,7 @@ docker ps
 If we do`nt have one of this container please try again
 
 ### step 4
-
 Migrate database
-
 ```shell script
 docker exec -it docker_php-fpm_1 bin/console doctrine:migrations:migrate 
 docker exec -it docker_php-fpm_1 bin/console doctrine:fixtures:load
@@ -61,17 +59,13 @@ docker exec -it docker_php-fpm_1 bin/console adapter:register-tasks
 ```
 
 ### step 5
-
 Run Tests
-
 ```shell script
 docker exec -it docker_php-fpm_1 vendor/bin/simple-phpunit
 ```
 
 ### step 6
-
 Fetch tasks
-
 ```shell script
 docker exec -it docker_php-fpm_1 bin/console adapter:register-tasks
 ```
