@@ -1,5 +1,21 @@
-# Enuygun Interview
-Task : To-Do Planning,
+# Enuygun
+
+To-Do Planning,
+
+## Architectures & Patterns
+
+#### Architectures
+- Hexagonal Architecture
+- Domain Driven Design Architecture
+
+#### Patterns
+- Adapter
+- Decorator
+- Proxy
+- Factory
+- Observer
+- Delegate
+
 
 ## Installation
 
