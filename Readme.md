@@ -43,19 +43,11 @@ docker exec -it docker_php-fpm_1 bin/console adapter:register-tasks
 
 ### step 4
 
-Run test
-
-```shell script
-docker exec -it docker_php-fpm_1 bin/phpunit
-```
-
-### step 5
-
 Fetch tasks
 
 ```shell script
 docker exec -it docker_php-fpm_1 bin/console adapter:register-tasks
 ```
 
-### step 6
+### step 5
 go to http://loccalhost
