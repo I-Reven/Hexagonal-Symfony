@@ -11,6 +11,10 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * Class TaskDecorator
+ * @package App\Infrastructure\Decorator
+ */
 abstract class TaskDecorator implements TaskDecoratorContract
 {
     /** @var Task[] */

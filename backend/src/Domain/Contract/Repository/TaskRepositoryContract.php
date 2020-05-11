@@ -14,7 +14,6 @@ use Doctrine\ORM\ORMException;
  */
 interface TaskRepositoryContract
 {
-
     /**
      * @param Task $task
      * @param Developer $developer

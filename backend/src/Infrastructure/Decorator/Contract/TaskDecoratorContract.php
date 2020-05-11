@@ -9,6 +9,10 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
+/**
+ * Interface TaskDecoratorContract
+ * @package App\Infrastructure\Decorator\Contract
+ */
 interface TaskDecoratorContract
 {
     /**

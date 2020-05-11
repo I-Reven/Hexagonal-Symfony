@@ -6,20 +6,21 @@ use App\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class IAmAliveControllerTest
+ * Class DeveloperControllerTest
  * @package App\Tests\Domain\Controller
- * @coversDefaultClass \App\Domain\Controller\IAmAliveController
+ * @coversDefaultClass \App\Domain\Controller\DeveloperController
  */
-class IAmAliveControllerTest extends TestCase
+class DeveloperControllerTest extends TestCase
 {
     /**
      * @test
-     * @covers ::handle
+     * @covers ::getAll
+     * @covers ::__construct
      */
-    public function itShouldReturnStatusCode200WhenMicroIsAlive()
+    public function itShouldReturnStatusCode200WhenGetDevelopers()
     {
         $client = $this->createClient();
-        $client->request('GET', '/api/i-am-alive');
+        $client->request('GET', '/api/developers');
 
         $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }

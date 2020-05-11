@@ -32,7 +32,7 @@ class RegisterTasksCommend extends Command
 
     protected function configure()
     {
-        $this->setDescription('Register Tasks')
+        $this->setDescription('Register Tasks Commend')
             ->setHelp('This command allows you to register task');
     }
 

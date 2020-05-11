@@ -10,6 +10,10 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
+/**
+ * Class TasksProxy
+ * @package App\Application\Proxy
+ */
 class TasksProxy extends TasksAbstract implements TasksContract
 {
     /**

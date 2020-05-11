@@ -1,13 +1,61 @@
-# Installation
+# Enuygun Interview
+Task : To-Do Planning,
+
+## Installation
+
 
 ### step 1
+Get project
 ```shell script
+cd docker
 docker-compose up --build
+docker ps
 ```
 
 ### step 2
+Build project
 ```shell script
-bin/console doctrine:migrations:migrate  
-bin/console doctrine:fixtures:load
-bin/console adapter:register-tasks
+cd docker
+docker-compose up --build
+docker ps
 ```
+
+Check Your docker containers
+
+- docker_nginx
+- docker_php-fpm
+- docker_database
+- docker_vue
+- rabbitmq:3-management
+- redis
+
+If we do`nt have one of this container please try again
+
+### step 3
+
+Migrate database
+
+```shell script
+docker exec -it docker_php-fpm_1 bin/console doctrine:migrations:migrate 
+docker exec -it docker_php-fpm_1 bin/console doctrine:fixtures:load
+docker exec -it docker_php-fpm_1 bin/console adapter:register-tasks
+```
+
+### step 4
+
+Run test
+
+```shell script
+docker exec -it docker_php-fpm_1 bin/phpunit
+```
+
+### step 5
+
+Fetch tasks
+
+```shell script
+docker exec -it docker_php-fpm_1 bin/console adapter:register-tasks
+```
+
+### step 6
+go to http://loccalhost

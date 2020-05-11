@@ -7,6 +7,10 @@ use App\Infrastructure\Entity\Task;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 
+/**
+ * Interface DeveloperRepositoryContract
+ * @package App\Domain\Contract\Repository
+ */
 interface DeveloperRepositoryContract
 {
     /**
