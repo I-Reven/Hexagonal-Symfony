@@ -1,6 +1,7 @@
-# Enuygun
+# Hexagonal Symfony Sample
 
-To-Do Planning,
+To-Do Planning Project,
+- in this project we have 2 difrent api for load our tasks and divide betwen 5 developer
 
 ## Architectures & Patterns
 
